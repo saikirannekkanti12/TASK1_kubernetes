@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-api
+  namespace: eshope
+spec:
+  template:
+    metadata:
+      labels:
+        version: v2-broken
+    spec:
+      containers:
+        - name: backend-api
+          env:
+            - name: APP_VERSION
+              value: v2-broken
+          readinessProbe:
+            httpGet:
+              path: /broken-healthz
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 5

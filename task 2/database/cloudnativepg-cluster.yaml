@@ -1,0 +1,18 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: eshope-pg
+  namespace: eshope
+spec:
+  instances: 3
+  imageName: ghcr.io/cloudnative-pg/postgresql:16
+  storage:
+    size: 5Gi
+  bootstrap:
+    initdb:
+      database: eshopedb
+      owner: eshopeuser
+      secret:
+        name: db-credentials
+  monitoring:
+    enablePodMonitor: true
