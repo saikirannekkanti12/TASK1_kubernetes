@@ -18,6 +18,24 @@ spec:
         app.kubernetes.io/name: frontend
         app.kubernetes.io/part-of: eshope-platform
     spec:
+      topologySpreadConstraints:
+      
+      # Spread across nodes
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app: backend-api
+
+      # Spread across zones
+      - maxSkew: 1
+        topologyKey: topology.kubernetes.io/zone
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          matchLabels:
+            app: backend-api
+    spec:
       containers:
         - name: frontend
           image: nvenkatasaikiran/frontend:v1
