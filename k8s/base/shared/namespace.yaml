@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: eshope
+  labels:
+    app.kubernetes.io/name: eshope
+    app.kubernetes.io/part-of: eshope-platform
