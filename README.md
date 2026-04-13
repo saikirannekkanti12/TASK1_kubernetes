@@ -50,3 +50,11 @@ Layer-specific docs:
 - `k8s/base/database/README.md`
 - `k8s/base/backend/README.md`
 - `k8s/base/frontend/README.md`
+
+-------------------------------------------
+For HPA working based on cpu usage, need install metric server
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+-k8/base/frontend/frontend-hpa.yaml
+-k8/base/backend/backend-hpa.yaml
+
+----
