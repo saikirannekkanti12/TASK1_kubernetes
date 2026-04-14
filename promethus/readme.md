@@ -25,4 +25,16 @@ Configure Prometheus to scrape frontend & backend app with mnitoring
  frontend.yaml
  backend.yaml
 
+kubectl apply -f frontend.yaml
+kubectl apply -f backend.yaml
+
+Prometheus must be allowed to watch all namespaces
+
+helm upgrade monitoring prometheus-community/kube-prometheus-stack \
+  -n monitoring \
+  --set prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues=false \
+  --set prometheus.prometheusSpec.serviceMonitorNamespaceSelector.any=true
+
+
+
   
