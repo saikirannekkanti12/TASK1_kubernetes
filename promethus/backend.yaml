@@ -6,11 +6,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: backend-api
+      app.kubernetes.io/name: backend-api   
   namespaceSelector:
     matchNames:
       - eshope
   endpoints:
-  - port: http
+  - port: http   
     path: /metrics
     interval: 15s
