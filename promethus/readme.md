@@ -35,6 +35,13 @@ helm upgrade monitoring prometheus-community/kube-prometheus-stack \
   --set prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues=false \
   --set prometheus.prometheusSpec.serviceMonitorNamespaceSelector.any=true
 
+ kubectl get servicemonitor -n monitoring
+kubectl get svc -n eshope --show-labels
+#check service are configure or not 
+
+
+
+
 
 
   
