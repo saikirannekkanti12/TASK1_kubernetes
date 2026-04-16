@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: ${TENANT}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+      tenant: ${TENANT}
+  template:
+    metadata:
+      labels:
+        app: frontend
+        tenant: ${TENANT}
+    spec:
+      containers:
+      - name: frontend
+        image: ${FRONTEND_IMAGE}
+        ports:
+        - containerPort: 80
