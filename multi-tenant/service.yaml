@@ -1,0 +1,35 @@
+#frontend service
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-svc
+  namespace: ${TENANT}
+spec:
+  selector:
+    app: frontend
+  ports:
+  - port: 80
+---
+# backend service
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-svc
+  namespace: ${TENANT}
+spec:
+  selector:
+    app: backend
+  ports:
+  - port: 8080
+---
+# service for redis
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-svc
+  namespace: ${TENANT}
+spec:
+  selector:
+    app: redis
+  ports:
+  - port: 6379
