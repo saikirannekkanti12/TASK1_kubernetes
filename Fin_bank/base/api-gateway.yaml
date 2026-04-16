@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: finbank-infra
+data:
+  nginx.conf: |
+    events {}
+    http {
+      server {
+        listen 80;
+
+        location /api/auth/ {
+          proxy_pass http://auth.finbank-new.svc.cluster.local:8081;
+        }
+
+        location / {
+          proxy_pass http://monolith.finbank-legacy.svc.cluster.local:8080;
+        }
+      }
+    }
