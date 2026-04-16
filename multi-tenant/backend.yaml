@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: ${TENANT}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+      tenant: ${TENANT}
+  template:
+    metadata:
+      labels:
+        app: backend
+        tenant: ${TENANT}
+    spec:
+      containers:
+      - name: backend
+        image: ${BACKEND_IMAGE}
+        ports:
+        - containerPort: 8080
