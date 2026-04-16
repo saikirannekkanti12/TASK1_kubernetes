@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: finbank-legacy
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: finbank-new
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: finbank-infra
